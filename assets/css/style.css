@@ -1,4 +1,13 @@
 /*test to see if linked properly */ 
-body{
-    background-color: green;
+html {
+    margin: auto;
+    width: 50%;
+    text-align: center;
+    padding: 10px;
+    background-color: whitesmoke;
 }
+
+#button {
+    background-color: rgb(99, 194, 194);
+}
+
