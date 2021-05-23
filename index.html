@@ -12,9 +12,9 @@
     <header> 
         <h1 class= "instructions" id = "instructions">Coding Quiz Challenge</h1>
             <p>Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score time by five seconds!</p>
-           
-            <h2> Seconds Left: <span id= "secondsLeft"></span> </h2>
-            <button id= "startButton">Start</button>
+           <!-- Used in count down timer-->
+            <h2> Seconds Left: <span id= "secondsLeft" class= "secondsLeft"></span> </h2>
+            <button id= "startButton" class= "startButton">Start</button>
             
     </header>
     <main>
@@ -29,13 +29,13 @@
         </section> 
 
 
-        <section>
+        <section class= "scoresPage">
             <h2 class= "highScores">High Scores</h2>
                 <h3 class= "finalScore">Your final score is</h3>
                  <h3 class= "name">Enter initials</h3>
-                    <button id="button" class="submitButton">Submit</button>
-                    <button id="button" class="backButton">Play Again</button>
-                    <button id="button" class="clearScore">Clear Scores</button>
+                    <button  class="submitButton">Submit</button>
+                    <button  class="backButton">Play Again</button>
+                    <button  class="clearScore">Clear Scores</button>
         </section>
     </main>
     
