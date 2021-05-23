@@ -1,4 +1,3 @@
-var score= 
 
 //count down timer start
 document.addEventListener('DOMContentLoaded',() =>{
@@ -43,5 +42,7 @@ var questions =[
         answer: "curly brackets"
     }
 ]
-
 //Questions end
+
+//scoring
+
