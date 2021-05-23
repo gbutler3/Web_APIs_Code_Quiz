@@ -1,4 +1,7 @@
-/*test to see if linked properly */ 
+*, *::before, *::after {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
 html {
     margin: auto;
     width: 50%;
@@ -9,6 +12,20 @@ html {
 
 button {
     background-color: rgb(0, 199, 199);
+}
+
+.questionCard{
+    /*display: none; */
+    flex: wrap;
+    padding: 25px;
+}
+
+.answerButtons{
+  display: grid;
+  justify-content: center;
+  box-sizing: border-box;
+  gap: 10px;
+  padding-top: 25px;
 }
 
 .scoresPage {
