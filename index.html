@@ -5,15 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
-    <script src="assets/js/scritp.js"></script>
 
     <title>Web APIs Code Quiz</title>
 </head>
 <body>
     <header> 
-        <h1 class= "instructions">Coding Quiz Challenge</h1>
+        <h1 class= "instructions" id = "instructions">Coding Quiz Challenge</h1>
             <p>Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score time by five seconds!</p>
-            <button id="button" class="start-button">Start</button>
+           
+            <h2> Seconds Left: <span id= "secondsLeft"></span> </h2>
+            <button id= "startButton">Start</button>
+            
     </header>
     <main>
         <section>
@@ -23,8 +25,7 @@
         </section>
 
         <section>
-        <h3 class= "timer"> Seconds remaining:</h3>
-             <div class= "timer-text"></div>
+       
         </section> 
 
 
@@ -32,10 +33,13 @@
             <h2 class= "highScores">High Scores</h2>
                 <h3 class= "finalScore">Your final score is</h3>
                  <h3 class= "name">Enter initials</h3>
-                    <button id="button" class="sumbit">Submit</button>
-                    <button id="button" class="goBack">Play Again</button>
+                    <button id="button" class="submitButton">Submit</button>
+                    <button id="button" class="backButton">Play Again</button>
                     <button id="button" class="clearScore">Clear Scores</button>
         </section>
     </main>
+    
+    <script src="assets/js/script.js"></script>
+
 </body>
 </html>
