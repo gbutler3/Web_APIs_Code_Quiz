@@ -1,6 +1,9 @@
 
-var question = document.getElementById("question")
-var answerButtonElement= document.getElementById("answerOptions")
+
+const questionElement = document.getElementById("question")
+const answerButtonElement= document.getElementById("answerOptions")
+
+var shuffledQuestions, currentQuestionIndex
 
 //count down timer start
 document.addEventListener('DOMContentLoaded',() =>{
@@ -8,11 +11,16 @@ var timeLeftDisplay = document.querySelector("#secondsLeft")
 var startbutton = document.querySelector("#startButton")
 let secondsLeft =10 //TODO: change the time 
 
+
 function startQuiz(){
     countDown(); 
     console.log('started')
     startbutton.classList.add('hide')
+    shuffledQuestions= questions.sort(()=>Math.random( -.5 ))
+    currentQuestionIndex= 0
     questionCard.classList.remove('hide')
+
+    setQuestion()
 }
 
 function countDown(){
@@ -29,10 +37,20 @@ startbutton.addEventListener("click", startQuiz)
 })
 //countdown timer end 
 
+
+function setQuestion(){
+    showQuestion(shuffledQuestions[currentQuestionIndex])
+}
+
+function showQuestion(question) {
+    questionElement.innerText =question.question
+    
+}
+
 //Questions start
 const questions =[
     {
-        question: "A very usefull tool used during development and debugging for pirinting content to be debugger is:",
+        question : "A very usefull tool used during development and debugging for pirinting content to be debugger is:",
         answers: [
             {text: "Javascript", correct: false},
             {text: "terminal/bash", correct: false},
@@ -77,5 +95,5 @@ const questions =[
         ]
     }
 ]
-//Questions end
 
+//Questions end
