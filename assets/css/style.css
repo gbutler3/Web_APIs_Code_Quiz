@@ -15,7 +15,6 @@ button {
 }
 
 .questionCard{
-    /*display: none; */
     flex: wrap;
     padding: 25px;
 }
@@ -29,5 +28,8 @@ button {
 }
 
 .scoresPage {
+    display: none;
+}
+.hide{
     display: none;
 }

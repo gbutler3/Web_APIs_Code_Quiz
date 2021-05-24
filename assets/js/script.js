@@ -1,10 +1,20 @@
 
+var question = document.getElementById("question")
+var answerButtonElement= document.getElementById("answerOptions")
+
 //count down timer start
 document.addEventListener('DOMContentLoaded',() =>{
 var timeLeftDisplay = document.querySelector("#secondsLeft")
-var startBtn = document.querySelector("#startButton")
+var startbutton = document.querySelector("#startButton")
 let secondsLeft =10 //TODO: change the time 
-    
+
+function startQuiz(){
+    countDown(); 
+    console.log('started')
+    startbutton.classList.add('hide')
+    questionCard.classList.remove('hide')
+}
+
 function countDown(){
     setInterval(function() {
         if (secondsLeft <= 0) {
@@ -15,34 +25,57 @@ function countDown(){
     }, 1000)
     }
 //when start button is clicked the timer starts the count down
-startBtn.addEventListener("click", countDown)
+startbutton.addEventListener("click", startQuiz)
 })
 //countdown timer end 
 
 //Questions start
-var questions =[
+const questions =[
     {
-        prompt: "A very usefull tool used during development and debugging for pirinting content to be debugger is: \n 1. Javascript \n 2. terminal/bash \n 3. for loops \n console.log", 
-        answer: "3. for loops"
+        question: "A very usefull tool used during development and debugging for pirinting content to be debugger is:",
+        answers: [
+            {text: "Javascript", correct: false},
+            {text: "terminal/bash", correct: false},
+            {text: "forloops", correct: true},
+            {text: "console.log", correct: false} 
+        ]
     }, 
     {
-        prompt: "Commonly used data types DO NOT include: \n strings \n booleans \n alerts \n numbers",
-        answer: "alerts"
+        question: "Commonly used data types DO NOT include:", 
+        answers: [
+            {text:"strings", correct: false},
+            {text: "booleans", correct: false},
+            {text: "alerts", correct: true},
+            {text: "numbers", correct: false}, 
+        ]
     },
     {
-        prompt: "Arrays in JavaScript can be used to store _______. \n numbers and strings \n other arrays \n booleans \n all of the above", 
-        answer: "all of the above"
+        question: "Arrays in JavaScript can be used to store _______.", 
+        answers: [
+            {text:"numbers and strings", correct: false}, 
+            {text:"other arrays", correct: false}, 
+            {text:"booleans", correct: false}, 
+            {text: "all of the above", correct: true },
+        ]
+    },
+        {
+        question: "String values must be enclosed within_______ when being assigned to variables.",
+        answers: [
+            {text:"commas", correct: false},  
+            {text:" curly brackets", correct: false},  
+            {text:" quotes", correct: true },
+            {text:" parentheses", correct: false}, 
+        ]
     },
     {
-        prompt: "String values must be enclosed within_______ when being assigned to variables. \n commas \n curly brackets \n quotes \n parentheses",
-        answer: " quotes"
-    },
-    {
-        prompt: "The condition in an if/else statement is enclosed within __________. \n quotes \n curly brackets \n parentheses \n square brackets",
-        answer: "curly brackets"
+        question: "The condition in an if/else statement is enclosed within __________.",
+        answers: [
+            {text:"quotes", correct: false},             
+            {text:"curly brackets", correct: true }, 
+            {text:"parentheses", correct: false},
+            {text: "square brackets", correct: false},
+        ]
     }
 ]
 //Questions end
-
-//scoring
 
