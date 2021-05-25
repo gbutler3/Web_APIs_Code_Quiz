@@ -9,7 +9,7 @@ var shuffledQuestions, currentQuestionIndex
 document.addEventListener('DOMContentLoaded',() =>{
 var timeLeftDisplay = document.querySelector("#secondsLeft")
 var startbutton = document.querySelector("#startButton")
-let secondsLeft =10 //TODO: change the time 
+var secondsLeft =10 //TODO: change the time 
 
 
 function startQuiz(){
@@ -44,14 +44,12 @@ function setQuestion(){
 
 function showQuestion(question) {
     questionElement.innerText =question.question
-    question.answers.forEach(answer => {
+    
+    question.answers.forEach(answer  => {    
         var button= document.createElement ('button')
         button.innerText=answer.text
         button.classList.add('answerOptions')
-        if (answer.correct){
-            button.dataset.correct=answer.correct
-        }
-        button.addEventListener('click', answerChoice)
+        console.log(answer);     answerButtonElement.appendChild(button);
         })
     }
 
@@ -59,7 +57,7 @@ function answerChoice(e) {}
 //Questions start
 const questions =[
     {
-        question : "A very usefull tool used during development and debugging for pirinting content to be debugger is:",
+        question : "A very useful tool used during development and debugging for pirinting content to be debugger is:",
         answers: [
             {text: "Javascript", correct: false},
             {text: "terminal/bash", correct: false},
