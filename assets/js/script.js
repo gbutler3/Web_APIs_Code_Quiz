@@ -44,9 +44,18 @@ function setQuestion(){
 
 function showQuestion(question) {
     questionElement.innerText =question.question
-    
-}
+    question.answers.forEach(answer => {
+        var button= document.createElement ('button')
+        button.innerText=answer.text
+        button.classList.add('answerOptions')
+        if (answer.correct){
+            button.dataset.correct=answer.correct
+        }
+        button.addEventListener('click', answerChoice)
+        })
+    }
 
+function answerChoice(e) {}
 //Questions start
 const questions =[
     {
