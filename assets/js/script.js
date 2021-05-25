@@ -1,7 +1,5 @@
-
-
 const questionElement = document.getElementById("question")
-const answerButtonElement= document.getElementById("answerOptions")
+const answerButtonElement= document.getElementById("answerButtons")
 
 var shuffledQuestions, currentQuestionIndex
 
@@ -48,12 +46,46 @@ function showQuestion(question) {
     question.answers.forEach(answer  => {    
         var button= document.createElement ('button')
         button.innerText=answer.text
+        button.value = answer.correct
+        button.addEventListener("click", checkQuestion )
         button.classList.add('answerOptions')
-        console.log(answer);     answerButtonElement.appendChild(button);
+        console.log(answer);     
+        answerButtonElement.appendChild(button)
         })
     }
 
+function checkQuestion (e){ //targets the event, but with different functionallity 
+    e.target.value; console.log(e.target.value)
+    if (e.target.value){ //checking if it is true or false
+        console.log("correct")
+        clearQuestion()
+        nextQuestion()
+        setQuestion()
+        noMoreQuestions()
+    } else { console.log("incorrect")
+            secondsLeft -=1
+            clearQuestion() //clears the list of options 
+            nextQuestion() // pulls the new question
+            setQuestion()
+            noMoreQuestions()
+        } 
+    }
+
+function noMoreQuestions(){
+    
+}
+
+function nextQuestion () {
+    currentQuestionIndex ++ 
+    console.log(currentQuestionIndex)
+}
+
+function clearQuestion () {
+    answerButtonElement.innerHTML=""
+}
 function answerChoice(e) {}
+
+
 //Questions start
 const questions =[
     {
