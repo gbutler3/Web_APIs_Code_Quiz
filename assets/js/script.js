@@ -1,25 +1,23 @@
-const questionElement = document.getElementById("question")
-const answerButtonElement= document.getElementById("answerButtons")
+const questionElement = document.getElementById("question");
+const answerButtonElement= document.getElementById("answerButtons");
 
 var shuffledQuestions, currentQuestionIndex
 
 //count down timer start
 document.addEventListener('DOMContentLoaded',() =>{
-var timeLeftDisplay = document.querySelector("#secondsLeft")
-var startbutton = document.querySelector("#startButton")
+var timeLeftDisplay = document.querySelector("#secondsLeft");
+var startbutton = document.querySelector("#startButton");
 var secondsLeft =120 //TODO: change the time 
-
 
 
 function startQuiz(){
     countDown(); 
-    console.log('started')
-    startbutton.classList.add('hide')
-    shuffledQuestions= questions.sort(()=>Math.random( -.5 ))
+    console.log('started');
+    startbutton.classList.add('hide');
+    shuffledQuestions= questions.sort(()=>Math.random( -.5 ));
     currentQuestionIndex= 0
-    questionCard.classList.remove('hide')
-
-    setQuestion()
+    questionCard.classList.remove('hide');
+    setQuestion();
 }
 
 function countDown(){
@@ -69,13 +67,18 @@ function checkQuestion (e){ //targets the event, but with different functionalli
         clearQuestion() //clears the list of answer options which are showing in the answer button options
         setQuestion() //showQuestion(shuffledQuestions[currentQuestionIndex])
         }
-    }
+}
+
+//variables used to end the game    
+var initialsEl = document.querySelector ("#name");
+var timerID;
+var time = question.length * 15;
 
 function endQuiz(){
 var scoresPageEl= document.getElementById("scoresPage");
 scoresPageEl.removeAttribute("class");
-clearInterval(setInterval)
-questionCard.classList.add('hide')
+clearInterval(setInterval);
+questionCard.classList.add('hide');
 }
 
 function nextQuestion () {
@@ -142,3 +145,6 @@ const questions =[
 ]
 
 //Questions end
+
+
+submitButton.addEventListener("click", startbutton)
