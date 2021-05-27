@@ -7,7 +7,8 @@ var shuffledQuestions, currentQuestionIndex
 document.addEventListener('DOMContentLoaded',() =>{
 var timeLeftDisplay = document.querySelector("#secondsLeft")
 var startbutton = document.querySelector("#startButton")
-var secondsLeft =10 //TODO: change the time 
+var secondsLeft =120 //TODO: change the time 
+
 
 
 function startQuiz(){
@@ -45,7 +46,7 @@ function showQuestion(question) {
     
     question.answers.forEach(answer  => {    
         var button= document.createElement ('button')
-        button.innerText=answer.text
+        button.innerText=answer.text //this makes the text be the inner homework
         button.value = answer.correct
         button.addEventListener("click", checkQuestion )
         button.classList.add('answerOptions')
@@ -61,23 +62,28 @@ function checkQuestion (e){ //targets the event, but with different functionalli
         clearQuestion()
         nextQuestion()
         setQuestion()
-        noMoreQuestions()
-    } else { console.log("incorrect")
-            secondsLeft -=1
-            clearQuestion() //clears the list of options 
-            nextQuestion() // pulls the new question
-            setQuestion()
-            noMoreQuestions()
-        } 
+    } else {
+        console.log("incorrect")
+        secondsLeft -= 10//if the time is  1 it ends
+        nextQuestion() // pulls the new question ie takes the currentquestion and adds 1 to pull the next one
+        clearQuestion() //clears the list of answer options which are showing in the answer button options
+        setQuestion() //showQuestion(shuffledQuestions[currentQuestionIndex])
+        }
     }
 
-function noMoreQuestions(){
-    
+function endQuiz(){
+var scoresPageEl= document.getElementById("scoresPage");
+scoresPageEl.removeAttribute("class");
+clearInterval(setInterval)
+questionCard.classList.add('hide')
 }
 
 function nextQuestion () {
     currentQuestionIndex ++ 
     console.log(currentQuestionIndex)
+    if (shuffledQuestions[currentQuestionIndex] === question.length) {
+        endQuiz ();
+    } 
 }
 
 function clearQuestion () {
