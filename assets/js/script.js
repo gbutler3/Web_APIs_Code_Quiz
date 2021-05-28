@@ -5,7 +5,7 @@ var shuffledQuestions, currentQuestionIndex
 
 //count down timer start
 document.addEventListener('DOMContentLoaded',() =>{
-var timeLeftDisplay = document.querySelector("#secondsLeft");
+var timerEl = document.querySelector("#secondsLeft");
 var startbutton = document.querySelector("#startButton");
 var secondsLeft =questions.length *12 //TODO: change the time 
 
@@ -20,12 +20,12 @@ function startQuiz(){
 }
 
 function countDown(){
-    setInterval(function() {
-        if (secondsLeft <= 0) {
-            clearInterval(secondsLeft = 0)
+    var timerInterval= setInterval(function() {
+        secondsLeft--;
+        timerEl.textContent =secondsLeft
+        if (secondsLeft === 0) {
+            clearInterval(timerInterval)
         }
-        timeLeftDisplay.innerHTML = secondsLeft
-        secondsLeft -=1 
     }, 1000)
     }
 //when start button is clicked the timer starts the count down
@@ -57,9 +57,9 @@ function checkQuestion (e){ //targets the event, but with different functionalli
     if (e.target.value){ //checking if it is true or false
         console.log("correct");
     } else {
-        console.log("incorrect");
-        secondsLeft -= 5;//if the time is  1 it ends
+        timerEl -= 5;//if the time is  1 it ends
         }
+        console.log(timerEl)
         nextQuestion(); // pulls the new question ie takes the currentquestion and adds 1 to pull the next one
         clearQuestion(); //clears the list of answer options which are showing in the answer button options
         setQuestion(); //showQuestion(shuffledQuestions[currentQuestionIndex])
@@ -69,7 +69,6 @@ function checkQuestion (e){ //targets the event, but with different functionalli
 
 //variables used to end the game    
 var initialsEl = document.querySelector ("#name");
-var timerID;
 var time = question.length * 15;
 
 function endQuiz(){
