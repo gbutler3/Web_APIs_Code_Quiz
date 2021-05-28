@@ -1,25 +1,27 @@
-*, *::before, *::after {
-    font-family: Arial, Helvetica, sans-serif;
+*,
+*::before,
+*::after {
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 html {
-    margin: auto;
-    width: 50%;
-    text-align: center;
-    padding: 10px;
-    background-color: whitesmoke;
+  margin: auto;
+  width: 50%;
+  text-align: center;
+  padding: 10px;
+  background-color: whitesmoke;
 }
 
 button {
-    background-color: rgb(0, 199, 199);
+  background-color: rgb(0, 199, 199);
 }
 
-.questionCard{
-    flex: wrap;
-    padding: 25px;
+.questionCard {
+  flex: wrap;
+  padding: 25px;
 }
 
-.answerButtons{
+.answerButtons {
   display: grid;
   justify-content: center;
   box-sizing: border-box;
@@ -28,8 +30,8 @@ button {
 }
 
 .scoresPage {
-    display: none;
+  display: none;
 }
-.hide{
-    display: none;
+.hide {
+  display: none;
 }

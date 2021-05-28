@@ -7,8 +7,7 @@ var shuffledQuestions, currentQuestionIndex
 document.addEventListener('DOMContentLoaded',() =>{
 var timeLeftDisplay = document.querySelector("#secondsLeft");
 var startbutton = document.querySelector("#startButton");
-var secondsLeft =120 //TODO: change the time 
-
+var secondsLeft =questions.length *12 //TODO: change the time 
 
 function startQuiz(){
     countDown(); 
@@ -26,7 +25,7 @@ function countDown(){
             clearInterval(secondsLeft = 0)
         }
         timeLeftDisplay.innerHTML = secondsLeft
-        secondsLeft -= 1
+        secondsLeft -=1 
     }, 1000)
     }
 //when start button is clicked the timer starts the count down
@@ -56,18 +55,17 @@ function showQuestion(question) {
 function checkQuestion (e){ //targets the event, but with different functionallity 
     e.target.value; console.log(e.target.value)
     if (e.target.value){ //checking if it is true or false
-        console.log("correct")
-        clearQuestion()
-        nextQuestion()
-        setQuestion()
+        console.log("correct");
     } else {
-        console.log("incorrect")
-        secondsLeft -= 10//if the time is  1 it ends
-        nextQuestion() // pulls the new question ie takes the currentquestion and adds 1 to pull the next one
-        clearQuestion() //clears the list of answer options which are showing in the answer button options
-        setQuestion() //showQuestion(shuffledQuestions[currentQuestionIndex])
+        console.log("incorrect");
+        secondsLeft -= 5;//if the time is  1 it ends
         }
+        nextQuestion(); // pulls the new question ie takes the currentquestion and adds 1 to pull the next one
+        clearQuestion(); //clears the list of answer options which are showing in the answer button options
+        setQuestion(); //showQuestion(shuffledQuestions[currentQuestionIndex])
 }
+
+// function checkQuestion(e){}
 
 //variables used to end the game    
 var initialsEl = document.querySelector ("#name");
@@ -75,10 +73,10 @@ var timerID;
 var time = question.length * 15;
 
 function endQuiz(){
-var scoresPageEl= document.getElementById("scoresPage");
-scoresPageEl.removeAttribute("class");
-clearInterval(setInterval);
-questionCard.classList.add('hide');
+    clearInterval(setInterval);
+    var scoresPageEl= document.getElementById("scoresPage");
+    scoresPageEl.removeAttribute("class");
+    questionCard.classList.add('hide');
 }
 
 function nextQuestion () {
@@ -94,57 +92,3 @@ function clearQuestion () {
 }
 function answerChoice(e) {}
 
-
-//Questions start
-const questions =[
-    {
-        question : "A very useful tool used during development and debugging for pirinting content to be debugger is:",
-        answers: [
-            {text: "Javascript", correct: false},
-            {text: "terminal/bash", correct: false},
-            {text: "forloops", correct: true},
-            {text: "console.log", correct: false} 
-        ]
-    }, 
-    {
-        question: "Commonly used data types DO NOT include:", 
-        answers: [
-            {text:"strings", correct: false},
-            {text: "booleans", correct: false},
-            {text: "alerts", correct: true},
-            {text: "numbers", correct: false}, 
-        ]
-    },
-    {
-        question: "Arrays in JavaScript can be used to store _______.", 
-        answers: [
-            {text:"numbers and strings", correct: false}, 
-            {text:"other arrays", correct: false}, 
-            {text:"booleans", correct: false}, 
-            {text: "all of the above", correct: true },
-        ]
-    },
-        {
-        question: "String values must be enclosed within_______ when being assigned to variables.",
-        answers: [
-            {text:"commas", correct: false},  
-            {text:" curly brackets", correct: false},  
-            {text:" quotes", correct: true },
-            {text:" parentheses", correct: false}, 
-        ]
-    },
-    {
-        question: "The condition in an if/else statement is enclosed within __________.",
-        answers: [
-            {text:"quotes", correct: false},             
-            {text:"curly brackets", correct: true }, 
-            {text:"parentheses", correct: false},
-            {text: "square brackets", correct: false},
-        ]
-    }
-]
-
-//Questions end
-
-
-submitButton.addEventListener("click", startbutton)
