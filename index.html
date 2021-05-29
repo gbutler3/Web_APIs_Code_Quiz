@@ -9,7 +9,7 @@
     <title>Web APIs Code Quiz</title>
 </head>
 <body>
-    <header> 
+    <header class= "instructionsCard" id=instructionsCard> 
         <h1 class= "instructions" id = "instructions">Coding Quiz Challenge</h1>
             <p>Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score time by five seconds!</p>
            <!-- Used in count down timer-->
@@ -17,8 +17,10 @@
     </header>
   
     <main>
-        <h2> Seconds Left: <span id= "secondsLeft" class= "secondsLeft"></span> </h2>
+        <section id= "secondsLeftCard" class= "secondsLeftCard" class= "hide">
+        <h2> Seconds Left: <span id= "secondsLeft" class= "secondsLeft" ></span> </h2>
         <button id= "startButton" class= "startButton" class="hide">Start</button>
+    </section>
 
         <section id= "questionCard"  class= "hide">
             <div id= "question"></div> </div>
@@ -28,15 +30,16 @@
                 <button class= "answerOptions"></button>
                 <button class= "answerOptions"></button> -->
             </div>
+            <div id= "feedBack"> </div>
         </section>
 
         <section class ="scoresPage"  class="hide" id= "scoresPage">
-            <h2 class= "highScores">High Scores</h2>
-                <h3 class= "finalScore">Your final score is</h3>
-                 <h3 id= "name" class= "name ">Enter initials</h3>
-                    <button  class="submitButton">Submit</button>
-                    <a href="index.html"><button  class="backButton">Play Again</button></a> 
-                    <button  class="clearScore">Clear Scores</button>
+            <h2 class= "hide" class= "highScores" id=highScores>High Scores</h2>
+                <h3> Your final score is: <span id= "finalScore" class= "finalScore"></span></h3>
+                 <h3 id= "initials" class= "initials ">Enter initials <input type="text"></h3>
+                    <button  id="submitButton">Submit</button>
+                    <a href="index.html"><button  id= "backButton"class="backButton" class= "hide">Play Again</button></a> 
+                    <button id= "clearScore" class="clearScore" class= "hide">Clear Scores</button>
         </section>
     </main>
     
