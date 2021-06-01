@@ -1,7 +1,7 @@
 const questions =[
     {
         question : "A very useful tool used during development and debugging for pirinting content to be debugger is:",
-        answers: [
+        answers: [ 
             {text: "Javascript", correct: false},
             {text: "terminal/bash", correct: false},
             {text: "forloops", correct: true},
