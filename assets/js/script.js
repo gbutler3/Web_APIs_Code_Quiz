@@ -90,8 +90,9 @@ var submitButton = document.getElementById("submitButton")
 submitButton.addEventListener("click", scoresPage) 
     
     //TODO: this needs work to show on HTML correctly 
-    var finalScoreEl= document.getElementById("finalScore");
+    var finalScoreEl= document.getElementById("finalScore").innerHTML;
     finalScoreEl.textContent = secondsLeft; 
+
 
 
 //when the submit button is pressed the scores page is supposed to pull up 
@@ -119,9 +120,7 @@ function saveHighScore() {
         };
 
         highscores.push(newScore);
-        window.localStorage.setItem("highscores", JSON.stringify(highscores));
-        window.location.href= "score.html"
-    }
+        window.localStorage.setItem("highscores", JSON.stringify(highscores));    }
 }
 
 
