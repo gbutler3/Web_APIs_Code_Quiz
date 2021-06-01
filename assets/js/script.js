@@ -50,7 +50,7 @@ function checkQuestion (e){ //targets the event, but with different functionalli
     if (e.target.value == "true"){ //checking if it is true or false
         feedbackEl.textContent= "correct!"
     } else {
-        time -=5;
+        time -= 5;
         feedbackEl.textContent= "Incorrect!"
         }
         nextQuestion(); // pulls the new question ie takes the currentquestion and adds 1 to pull the next one
@@ -72,6 +72,7 @@ function nextQuestion () {
 var initialsEl = document.querySelector ("#name");
 var time = question.length * 15;
 function endQuiz(){
+    document.getElementById("finalScore").innerText=secondsLeft.innerHTML;
     clearInterval(setInterval);
     var scoresPageEl= document.getElementById("scoresPage");
     scoresPageEl.removeAttribute("class");
@@ -79,12 +80,13 @@ function endQuiz(){
     secondsLeftCard.classList.add('hide');
     backButton.classList.add('hide');
     clearScore.classList.add('hide');
+    
+    
 }
 var submitButton = document.getElementById("submitButton")
 submitButton.addEventListener("click", scoresPage) 
-    //TODO: this needs work to show on HTML correctly 
-    var finalScoreEl= document.getElementById("finalScore").innerHTML;
-    finalScoreEl.textContent = secondsLeft; 
+clearScore.addEventListener("click", clearHighScore)
+
 //when the submit button is pressed the scores page is supposed to pull up 
 function scoresPage (){
     submitButton.classList.add('hide');
@@ -93,30 +95,35 @@ function scoresPage (){
     backButton.classList.remove('hide');
     clearScore.classList.remove('hide');
     initials.classList.add('hide');
-    finalScore.classList.add('hide');
     saveHighScore()
 }
 function saveHighScore() {
     var initials =initialsEl;
     if (initials !== " "){
-        var highScores= JSON.parse(window.localStorage.getItem("highScores")) || [];
+        var highScores= JSON.parse(localStorage.getItem("highScores")) || [];
         var newScore= {
-            score: secondsLeft, 
+            score: time, 
             initials: initials.value
         };
         highScores.push(newScore);
-        window.localStorage.setItem("highScores", JSON.stringify(highScores));   
+        localStorage.setItem("highScores", JSON.stringify(highScores));   
      }
 }
 function showHighScores(){
-     var highScores= JSON.parse(window.localStorage.getItem("highScores")) || [];
-     highScores.forEach(function(score){
+    var highScores= JSON.parse(localStorage.getItem("highScores")) || [];
+    highScores.forEach(function(score){
     var listTag = document.createElement("li");
     listTag.textContent= score.initials + " - " + score.score;
     var listel= document.getElementById("highScores");
     listel.appendChild(listTag)
 }) 
 }
+
+function clearHighScore(){
+    localStorage.removeItem("highScores")
+    window.location.reload();
+}
+
 //runs the function when the page loads
 showHighScores();
 function clearQuestion () {
