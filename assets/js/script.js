@@ -1,5 +1,6 @@
 const questionElement = document.getElementById("question");
 const answerButtonElement= document.getElementById("answerButtons");
+var feedbackEl= document.getElementById("feedBack");
 
 var shuffledQuestions, currentQuestionIndex
 
@@ -45,18 +46,18 @@ function showQuestion(question) {
         button.value = answer.correct
         button.addEventListener("click", checkQuestion )
         button.classList.add('answerOptions')
-        console.log(answer);     
         answerButtonElement.appendChild(button)
         })
     }
 
-function checkQuestion (e){ //targets the event, but with different functionallity 
+function checkQuestion (){ //targets the event, but with different functionallity 
     // e.target.value; console.log(e.target.value)
-    if (e.target.value){ //checking if it is true or false
-        console.log ("true")
+    if (this.value != questions[currentQuestionIndex]){ //checking if it is true or false
+        time -=5;
+        feedbackEl.textContent= "Incorrect!"
     } else {
-        console.log("false")
-        timerInterval -= 5;//if the time is  1 it ends
+        console.log("true")
+        feedbackEl.textContent= "Correct"
         }
         nextQuestion(); // pulls the new question ie takes the currentquestion and adds 1 to pull the next one
         clearQuestion(); //clears the list of answer options which are showing in the answer button options
@@ -119,9 +120,7 @@ function saveHighScore() {
 
         highscores.push(newScore);
         window.localStorage.setItem("highscores", JSON.stringify(highscores));
-
         window.location.href= "score.html"
-        
     }
 }
 
@@ -130,4 +129,3 @@ function clearQuestion () {
     answerButtonElement.innerHTML=""
 }
 function answerChoice(e) {}
-
