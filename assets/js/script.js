@@ -8,7 +8,7 @@ var shuffledQuestions, currentQuestionIndex
 document.addEventListener('DOMContentLoaded',() =>{
 var timerEl = document.getElementById("secondsLeft");
 var startbutton = document.getElementById("startButton");
-var secondsLeft =questions.length *12 //TODO: change the time  
+var secondsLeft =questions.length * 10 
 
 function startQuiz(){
     countDown(); 
@@ -26,7 +26,7 @@ function countDown(){
         secondsLeft--;
         timerEl.textContent =secondsLeft
         if (secondsLeft === 0) {
-            clearInterval(timerInterval)
+            clearInterval(timerInterval);
         }
     }, 1000)
     }
@@ -37,19 +37,19 @@ function setQuestion(){
     showQuestion(shuffledQuestions[currentQuestionIndex])
 }
 
-function showQuestion(question) {
-    questionElement.innerText =question.question;
+function showQuestion(questions) {
+    questionElement.innerText =questions.question;
     
-    question.answers.forEach(answer  => {    
+    questions.answers.forEach(answer => {    
         var button= document.createElement ('button')
         button.innerText=answer.text //this makes the text be the inner homework
         button.value = answer.correct
         button.addEventListener("click", checkQuestion )
         button.classList.add('answerOptions')
         answerButtonElement.appendChild(button)
-        })
-    }
-
+    })
+}
+//TODO: Correct and incorrect not showing properly. they all show incorrect
 function checkQuestion (){ //targets the event, but with different functionallity 
     // e.target.value; console.log(e.target.value)
     if (this.value != questions[currentQuestionIndex]){ //checking if it is true or false
@@ -62,7 +62,8 @@ function checkQuestion (){ //targets the event, but with different functionallit
         nextQuestion(); // pulls the new question ie takes the currentquestion and adds 1 to pull the next one
         clearQuestion(); //clears the list of answer options which are showing in the answer button options
         setQuestion(); //showQuestion(shuffledQuestions[currentQuestionIndex])
-    }
+}
+
 
 function nextQuestion () {
     currentQuestionIndex ++ 
@@ -109,10 +110,10 @@ function scoresPage (){
 }
 
 function saveHighScore() {
-    var initials =initialsEl.value.trim();
+    var initials =initialsEl;
 
     if (initials !== " "){
-        var highscores= JSON.pars(window.localStorage.getItem("highscores")) || [];
+        var highscores= JSON.pars(window.localStorage.getItem("highScores")) || [];
 
         var newScore= {
             score: secondsLeft, 
@@ -120,11 +121,24 @@ function saveHighScore() {
         };
 
         highscores.push(newScore);
-        window.localStorage.setItem("highscores", JSON.stringify(highscores));    }
+        window.localStorage.setItem("highScores", JSON.stringify(highscores));   
+     }
 }
 
+function showHighScores(){
+     var highscores= JSON.parse(window.localStorage.getItem("highScores")) || [];
+    
+    saveHighScore.forEach(function(score){
+    var listTag = document.createElement("li");
+    listTag.textContent= score.initials + " - " + score.score;
+})
+
+    var listel= document.getElementById("highScores");
+    listel.appendChild(listTag)
+}
+//runs the function when the page loads
+showHighScores();
 
 function clearQuestion () {
     answerButtonElement.innerHTML=""
 }
-function answerChoice(e) {}
