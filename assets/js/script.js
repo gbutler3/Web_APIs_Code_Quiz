@@ -2,6 +2,7 @@ const questionElement = document.getElementById("question");
 const answerButtonElement= document.getElementById("answerButtons");
 var feedbackEl= document.getElementById("feedBack");
 var shuffledQuestions, currentQuestionIndex
+
 //count down timer start
 document.addEventListener('DOMContentLoaded',() =>{
 var timerEl = document.getElementById("secondsLeft");
@@ -57,9 +58,13 @@ function checkQuestion (e){ //targets the event, but with different functionalli
         setQuestion(); //showQuestion(shuffledQuestions[currentQuestionIndex])
 }
 function nextQuestion () {
-    currentQuestionIndex ++ 
-    console.log(currentQuestionIndex)
-    if (shuffledQuestions[currentQuestionIndex] === question.length) {
+    var endOfQuizIndex = currentQuestionIndex;
+    endOfQuizIndex++
+    if (currentQuestionIndex < questions.length -1){
+    currentQuestionIndex ++ }
+    console.log(currentQuestionIndex);
+    console.log(questions.length)
+    if ( endOfQuizIndex == questions.length ) {
         endQuiz ();
     } 
 }
@@ -94,10 +99,10 @@ function scoresPage (){
 function saveHighScore() {
     var initials =initialsEl;
     if (initials !== " "){
-        var highScores= JSON.pars(window.localStorage.getItem("highScores")) || [];
+        var highScores= JSON.parse(window.localStorage.getItem("highScores")) || [];
         var newScore= {
             score: secondsLeft, 
-            initials: initials
+            initials: initials.value
         };
         highScores.push(newScore);
         window.localStorage.setItem("highScores", JSON.stringify(highScores));   
