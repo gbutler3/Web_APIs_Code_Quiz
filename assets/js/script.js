@@ -43,14 +43,12 @@ function showQuestion(questions) {
         answerButtonElement.appendChild(button)
     })
 }
-//TODO: Correct and incorrect not showing properly. they all show incorrect
 function checkQuestion (e){ //targets the event, but with different functionallity 
     // e.target.value; console.log(e.target.value)
     console.log(e.target.value)
     if (e.target.value == "true"){ //checking if it is true or false
         feedbackEl.textContent= "correct!"
     } else {
-        time -= 5;
         feedbackEl.textContent= "Incorrect!"
         }
         nextQuestion(); // pulls the new question ie takes the currentquestion and adds 1 to pull the next one
@@ -102,7 +100,7 @@ function saveHighScore() {
     if (initials !== " "){
         var highScores= JSON.parse(localStorage.getItem("highScores")) || [];
         var newScore= {
-            score: time, 
+            score: secondsLeft.innerHTML,
             initials: initials.value
         };
         highScores.push(newScore);
