@@ -18,7 +18,7 @@ This week’s coursework will equip you with all the skills you need to succeed 
 
 ## Links
 
-- Webpage:https://gbutler3.github.io/Web_APIs_Code_Quiz_Mini_Project/
+- Webpage:https://gbutler3.github.io/Web_APIs_Code_Quiz/
 - GitHub: https://github.com/gbutler3/Web_APIs_Code_Quiz_Mini_Project
 
 ## Screenshot Preview
